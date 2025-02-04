@@ -145,5 +145,47 @@ namespace StylishCalculator
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;
         }
+        private double Factorial(int number)
+        {
+            if (number < 0) return 0; // Ошибка для отрицательных чисел
+            double result = 1;
+            for (int i = 1; i <= number; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
+        private void FactorialButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int number = int.Parse(_currentInput); // Преобразуем ввод в число
+                double result = Factorial(number); // Вычисляем факториал
+                _currentInput = result.ToString(); // Выводим результат
+                Display.Text = _currentInput;
+                DisplayTop.Text = _currentInput;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void PercentButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                double number = double.Parse(_currentInput); // Преобразуем ввод в число
+                double result = number / 100; // Вычисляем процент
+                _currentInput = result.ToString(); // Выводим результат
+                Display.Text = _currentInput;
+                DisplayTop.Text = _currentInput;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
     }
 }

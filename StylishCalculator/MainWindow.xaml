@@ -106,6 +106,8 @@
             <Button x:Name="ButtonCtg" Content="ctg" Grid.Row="5" Grid.Column="3" Click="TrigButton_Click"/>
             <Button x:Name="ButtonOpenParenthesis" Content="(" Grid.Row="7" Grid.Column="0" Click="ParenthesisButton_Click"/>
             <Button x:Name="ButtonCloseParenthesis" Content=")" Grid.Row="7" Grid.Column="1" Click="ParenthesisButton_Click"/>
+            <Button x:Name="ButtonFactorial" Content="!" Grid.Row="7" Grid.Column="2" Click="FactorialButton_Click"/>
+            <Button x:Name="ButtonPercent" Content="%" Grid.Row="7" Grid.Column="3" Click="PercentButton_Click"/>
 
             <Button x:Name="ButtonLog" Content="log" Grid.Row="8" Grid.Column="0" Click="LogButton_Click"/>
             <Button x:Name="ButtonLn" Content="ln" Grid.Row="8" Grid.Column="1" Click="LnButton_Click"/>
