@@ -58,6 +58,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -105,6 +106,11 @@
             <Button x:Name="ButtonCtg" Content="ctg" Grid.Row="5" Grid.Column="3" Click="TrigButton_Click"/>
             <Button x:Name="ButtonOpenParenthesis" Content="(" Grid.Row="7" Grid.Column="0" Click="ParenthesisButton_Click"/>
             <Button x:Name="ButtonCloseParenthesis" Content=")" Grid.Row="7" Grid.Column="1" Click="ParenthesisButton_Click"/>
+
+            <Button x:Name="ButtonLog" Content="log" Grid.Row="8" Grid.Column="0" Click="LogButton_Click"/>
+            <Button x:Name="ButtonLn" Content="ln" Grid.Row="8" Grid.Column="1" Click="LnButton_Click"/>
+            <Button x:Name="ButtonPi" Content="π" Grid.Row="8" Grid.Column="2" Click="PiButton_Click"/>
+            <Button x:Name="ButtonE" Content="e" Grid.Row="8" Grid.Column="3" Click="EButton_Click"/>
 
         </Grid>
     </Grid>

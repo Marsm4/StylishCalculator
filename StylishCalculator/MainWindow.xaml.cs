@@ -88,10 +88,11 @@ namespace StylishCalculator
 
         private void SqrtButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput = "sqrt(" + _currentInput + ")";
+            _currentInput = "Sqrt(" + _currentInput + ")";  // Используем правильное имя функции Sqrt
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;  // Обновляем верхний экран
         }
+
 
         private void TrigButton_Click(object sender, RoutedEventArgs e)
         {
@@ -116,6 +117,33 @@ namespace StylishCalculator
 
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;  // Обновляем верхний экран с текущим вводом
+        }
+        private void LogButton_Click(object sender, RoutedEventArgs e)
+        {
+            _currentInput = "Log10(" + _currentInput + ")";  // Логарифм по основанию 10
+            Display.Text = _currentInput;
+            DisplayTop.Text = _currentInput;
+        }
+
+        private void LnButton_Click(object sender, RoutedEventArgs e)
+        {
+            _currentInput = "Ln(" + _currentInput + ")";  // Натуральный логарифм
+            Display.Text = _currentInput;
+            DisplayTop.Text = _currentInput;
+        }
+
+        private void PiButton_Click(object sender, RoutedEventArgs e)
+        {
+            _currentInput += "3.14159265359";  // Константа π
+            Display.Text = _currentInput;
+            DisplayTop.Text = _currentInput;
+        }
+
+        private void EButton_Click(object sender, RoutedEventArgs e)
+        {
+            _currentInput += "2.71828182846";  // Константа e
+            Display.Text = _currentInput;
+            DisplayTop.Text = _currentInput;
         }
     }
 }
