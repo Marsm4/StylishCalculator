@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using NCalc;  // Подключаем библиотеку NCalc
+using NCalc;
 
 namespace StylishCalculator
 {
     public partial class MainWindow : Window
     {
         private string _currentInput;
+        private bool _isFunctionPressed = false; // Флаг для отслеживания нажатия функции
 
         public MainWindow()
         {
@@ -20,7 +21,7 @@ namespace StylishCalculator
             Button button = (Button)sender;
             _currentInput += button.Content.ToString();
             Display.Text = _currentInput;
-            DisplayTop.Text = _currentInput;  // Обновляем верхний экран с текущим вводом
+            DisplayTop.Text = _currentInput;
         }
 
         private void OperationButton_Click(object sender, RoutedEventArgs e)
@@ -28,7 +29,7 @@ namespace StylishCalculator
             Button button = (Button)sender;
             _currentInput += " " + button.Content.ToString() + " ";
             Display.Text = _currentInput;
-            DisplayTop.Text = _currentInput;  // Обновляем верхний экран с текущим вводом
+            DisplayTop.Text = _currentInput;
         }
 
         private void EqualsButton_Click(object sender, RoutedEventArgs e)
@@ -39,9 +40,9 @@ namespace StylishCalculator
 
                 // Заменяем тригонометрические функции на корректные
                 expression = expression.Replace("cos", "Cos")
-                                         .Replace("sin", "Sin")
-                                         .Replace("tan", "Tan")
-                                         .Replace("ctg", "Ctg");
+                                       .Replace("sin", "Sin")
+                                       .Replace("tan", "Tan")
+                                       .Replace("ctg", "Ctg");
 
                 // Создаем объект Expression из NCalc для вычисления выражения
                 NCalc.Expression exp = new NCalc.Expression(expression);
@@ -66,7 +67,7 @@ namespace StylishCalculator
         {
             _currentInput = "";
             Display.Text = "";
-            DisplayTop.Text = "";  // Очищаем верхний экран
+            DisplayTop.Text = "";
         }
 
         private void BackspaceButton_Click(object sender, RoutedEventArgs e)
@@ -75,34 +76,33 @@ namespace StylishCalculator
             {
                 _currentInput = _currentInput.Substring(0, _currentInput.Length - 1);
                 Display.Text = _currentInput;
-                DisplayTop.Text = _currentInput;  // Обновляем верхний экран после удаления
+                DisplayTop.Text = _currentInput;
             }
         }
 
         private void PowerButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput += " ^ "; // Добавляем символ для возведения в степень
+            _currentInput += " ^ ";
             Display.Text = _currentInput;
-            DisplayTop.Text = _currentInput;  // Обновляем верхний экран
+            DisplayTop.Text = _currentInput;
         }
 
         private void SqrtButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput = "Sqrt(" + _currentInput + ")";  // Используем правильное имя функции Sqrt
+            _currentInput = "Sqrt(" + _currentInput + ")";
             Display.Text = _currentInput;
-            DisplayTop.Text = _currentInput;  // Обновляем верхний экран
+            DisplayTop.Text = _currentInput;
         }
-
 
         private void TrigButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            _currentInput = button.Content.ToString() + "(" + _currentInput + ")";
+            _currentInput += button.Content.ToString() + "("; // Добавляем функцию и открывающую скобку
+            _isFunctionPressed = true; // Устанавливаем флаг, что функция была нажата
             Display.Text = _currentInput;
-            DisplayTop.Text = _currentInput;  // Обновляем верхний экран
+            DisplayTop.Text = _currentInput;
         }
 
-        // Добавляем обработку для кнопок с открывающей и закрывающей скобкой
         private void ParenthesisButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -116,35 +116,37 @@ namespace StylishCalculator
             }
 
             Display.Text = _currentInput;
-            DisplayTop.Text = _currentInput;  // Обновляем верхний экран с текущим вводом
+            DisplayTop.Text = _currentInput;
         }
+
         private void LogButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput = "Log10(" + _currentInput + ")";  // Логарифм по основанию 10
+            _currentInput = "Log10(" + _currentInput + ")";
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;
         }
 
         private void LnButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput = "Ln(" + _currentInput + ")";  // Натуральный логарифм
+            _currentInput = "Ln(" + _currentInput + ")";
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;
         }
 
         private void PiButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput += "3.14159265359";  // Константа π
+            _currentInput += "3.14159265359";
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;
         }
 
         private void EButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput += "2.71828182846";  // Константа e
+            _currentInput += "2.71828182846";
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;
         }
+
         private double Factorial(int number)
         {
             if (number < 0) return 0; // Ошибка для отрицательных чисел
@@ -155,13 +157,14 @@ namespace StylishCalculator
             }
             return result;
         }
+
         private void FactorialButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                int number = int.Parse(_currentInput); // Преобразуем ввод в число
-                double result = Factorial(number); // Вычисляем факториал
-                _currentInput = result.ToString(); // Выводим результат
+                int number = int.Parse(_currentInput);
+                double result = Factorial(number);
+                _currentInput = result.ToString();
                 Display.Text = _currentInput;
                 DisplayTop.Text = _currentInput;
             }
@@ -170,13 +173,14 @@ namespace StylishCalculator
                 MessageBox.Show("Ошибка: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private void PercentButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                double number = double.Parse(_currentInput); // Преобразуем ввод в число
-                double result = number / 100; // Вычисляем процент
-                _currentInput = result.ToString(); // Выводим результат
+                double number = double.Parse(_currentInput);
+                double result = number / 100;
+                _currentInput = result.ToString();
                 Display.Text = _currentInput;
                 DisplayTop.Text = _currentInput;
             }
@@ -185,7 +189,5 @@ namespace StylishCalculator
                 MessageBox.Show("Ошибка: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-
     }
 }
