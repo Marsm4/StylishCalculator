@@ -3,14 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Stylish Calculator" Height="600" Width="500"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Background="#FF2E2E2E">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="Background" Value="#FFDDDDDD"/>
-            <Setter Property="BorderBrush" Value="#FF888888"/>
-            <Setter Property="Foreground" Value="#FF333333"/>
+            <Setter Property="Background" Value="#FF444444"/>
+            <Setter Property="BorderBrush" Value="#FF666666"/>
+            <Setter Property="Foreground" Value="#FFDDDDDD"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -18,7 +19,7 @@
                         <Border Background="{TemplateBinding Background}" 
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="1" 
-                                CornerRadius="5">
+                                CornerRadius="10">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -26,12 +27,27 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFCCCCCC"/>
+                    <Setter Property="Background" Value="#FF555555"/>
+                    <Setter Property="BorderBrush" Value="#FF888888"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" Value="#FFAAAAAA"/>
+                    <Setter Property="Background" Value="#FF666666"/>
+                    <Setter Property="BorderBrush" Value="#FFAAAAAA"/>
                 </Trigger>
             </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Background" Value="#FF3A3A3A"/>
+            <Setter Property="BorderBrush" Value="#FF666666"/>
+            <Setter Property="Foreground" Value="#FFDDDDDD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            
         </Style>
     </Window.Resources>
 
@@ -45,7 +61,7 @@
         <TextBox x:Name="DisplayTop" Grid.Row="0" FontSize="20" TextAlignment="Right" Margin="10" Padding="10" IsReadOnly="True" Background="Transparent" BorderBrush="Transparent" Foreground="#FF888888"/>
 
         <!-- Display (Bottom) -->
-        <TextBox x:Name="Display" Grid.Row="1" FontSize="30" TextAlignment="Right" Margin="10" Padding="10" IsReadOnly="True" Background="#FFEEEEEE" BorderBrush="#FF888888" Foreground="#FF333333"/>
+        <TextBox x:Name="Display" Grid.Row="1" FontSize="30" TextAlignment="Right" Margin="10" Padding="10" IsReadOnly="True" Background="#FF3A3A3A" BorderBrush="#FF666666" Foreground="#FFDDDDDD"/>
 
         <!-- Buttons -->
         <Grid Grid.Row="1" Margin="10">
@@ -64,56 +80,53 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                 <ColumnDefinition Width="*"/>
-              
-
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!-- Row 1 (C, x, /, and clear buttons) -->
-            <Button x:Name="ButtonClear" Content="C" Grid.Row="1" Grid.Column="0" Click="ClearButton_Click"/>
-            <Button x:Name="ButtonBackspace" Content="x" Grid.Row="1" Grid.Column="1" Click="BackspaceButton_Click"/>
-            <Button x:Name="ButtonDivide" Content="/" Grid.Row="1" Grid.Column="2" Click="OperationButton_Click"/>
-            <Button x:Name="ButtonMultiply" Content="*" Grid.Row="1" Grid.Column="3" Click="OperationButton_Click"/>
+            <Button x:Name="ButtonClear" Content="C" Grid.Row="1" Grid.Column="0" Click="ClearButton_Click" Background="#FFD9534F"/>
+            <Button x:Name="ButtonBackspace" Content="x" Grid.Row="1" Grid.Column="1" Click="BackspaceButton_Click" Background="#FFD9534F"/>
+            <Button x:Name="ButtonDivide" Content="/" Grid.Row="1" Grid.Column="2" Click="OperationButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonMultiply" Content="*" Grid.Row="1" Grid.Column="3" Click="OperationButton_Click" Background="#FF5BC0DE"/>
 
             <!-- Row 2 (Numeric buttons) -->
             <Button x:Name="Button7" Content="7" Grid.Row="2" Grid.Column="0" Click="NumberButton_Click"/>
             <Button x:Name="Button8" Content="8" Grid.Row="2" Grid.Column="1" Click="NumberButton_Click"/>
             <Button x:Name="Button9" Content="9" Grid.Row="2" Grid.Column="2" Click="NumberButton_Click"/>
-            <Button x:Name="ButtonSubtract" Content="-" Grid.Row="2" Grid.Column="3" Click="OperationButton_Click"/>
+            <Button x:Name="ButtonSubtract" Content="-" Grid.Row="2" Grid.Column="3" Click="OperationButton_Click" Background="#FF5BC0DE"/>
 
             <!-- Row 3 (Numeric buttons) -->
             <Button x:Name="Button4" Content="4" Grid.Row="3" Grid.Column="0" Click="NumberButton_Click"/>
             <Button x:Name="Button5" Content="5" Grid.Row="3" Grid.Column="1" Click="NumberButton_Click"/>
             <Button x:Name="Button6" Content="6" Grid.Row="3" Grid.Column="2" Click="NumberButton_Click"/>
-            <Button x:Name="ButtonAdd" Content="+" Grid.Row="3" Grid.Column="3" Click="OperationButton_Click"/>
+            <Button x:Name="ButtonAdd" Content="+" Grid.Row="3" Grid.Column="3" Click="OperationButton_Click" Background="#FF5BC0DE"/>
 
             <!-- Row 4 (Numeric buttons) -->
             <Button x:Name="Button1" Content="1" Grid.Row="4" Grid.Column="0" Click="NumberButton_Click"/>
             <Button x:Name="Button2" Content="2" Grid.Row="4" Grid.Column="1" Click="NumberButton_Click"/>
             <Button x:Name="Button3" Content="3" Grid.Row="4" Grid.Column="2" Click="NumberButton_Click"/>
-            <Button x:Name="ButtonEquals" Content="=" Grid.Row="4" Grid.Column="3" Click="EqualsButton_Click"/>
+            <Button x:Name="ButtonEquals" Content="=" Grid.Row="4" Grid.Column="3" Click="EqualsButton_Click" Background="#FF5CB85C"/>
 
             <!-- Row 5 (Numeric buttons) -->
             <Button x:Name="Button0" Content="0" Grid.Row="5" Grid.Column="0" Click="NumberButton_Click"/>
             <Button x:Name="ButtonDecimal" Content="." Grid.Row="5" Grid.Column="1" Click="NumberButton_Click"/>
 
             <!-- Row 6 (Additional function buttons) -->
-            <Button x:Name="ButtonPower" Content="^" Grid.Row="6" Grid.Column="0" Click="PowerButton_Click"/>
-            <Button x:Name="ButtonSqrt" Content="√" Grid.Row="6" Grid.Column="1" Click="SqrtButton_Click"/>
-            <Button x:Name="ButtonCos" Content="cos" Grid.Row="6" Grid.Column="2" Click="TrigButton_Click"/>
-            <Button x:Name="ButtonSin" Content="sin" Grid.Row="6" Grid.Column="3" Click="TrigButton_Click"/>
-            <Button x:Name="ButtonTan" Content="tan" Grid.Row="5" Grid.Column="2" Click="TrigButton_Click"/>
-            <Button x:Name="ButtonCtg" Content="ctg" Grid.Row="5" Grid.Column="3" Click="TrigButton_Click"/>
-            <Button x:Name="ButtonOpenParenthesis" Content="(" Grid.Row="7" Grid.Column="0" Click="ParenthesisButton_Click"/>
-            <Button x:Name="ButtonCloseParenthesis" Content=")" Grid.Row="7" Grid.Column="1" Click="ParenthesisButton_Click"/>
-            <Button x:Name="ButtonFactorial" Content="!" Grid.Row="7" Grid.Column="2" Click="FactorialButton_Click"/>
-            <Button x:Name="ButtonPercent" Content="%" Grid.Row="7" Grid.Column="3" Click="PercentButton_Click"/>
+            <Button x:Name="ButtonPower" Content="^" Grid.Row="6" Grid.Column="0" Click="PowerButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonSqrt" Content="√" Grid.Row="6" Grid.Column="1" Click="SqrtButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonCos" Content="cos" Grid.Row="6" Grid.Column="2" Click="TrigButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonSin" Content="sin" Grid.Row="6" Grid.Column="3" Click="TrigButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonTan" Content="tan" Grid.Row="5" Grid.Column="2" Click="TrigButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonCtg" Content="ctg" Grid.Row="5" Grid.Column="3" Click="TrigButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonOpenParenthesis" Content="(" Grid.Row="7" Grid.Column="0" Click="ParenthesisButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonCloseParenthesis" Content=")" Grid.Row="7" Grid.Column="1" Click="ParenthesisButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonFactorial" Content="!" Grid.Row="7" Grid.Column="2" Click="FactorialButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonPercent" Content="%" Grid.Row="7" Grid.Column="3" Click="PercentButton_Click" Background="#FF5BC0DE"/>
 
-            <Button x:Name="ButtonLog" Content="log" Grid.Row="8" Grid.Column="0" Click="LogButton_Click"/>
-            <Button x:Name="ButtonLn" Content="ln" Grid.Row="8" Grid.Column="1" Click="LnButton_Click"/>
-            <Button x:Name="ButtonPi" Content="π" Grid.Row="8" Grid.Column="2" Click="PiButton_Click"/>
-            <Button x:Name="ButtonE" Content="e" Grid.Row="8" Grid.Column="3" Click="EButton_Click"/>
-
+            <Button x:Name="ButtonLog" Content="log" Grid.Row="8" Grid.Column="0" Click="LogButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonLn" Content="ln" Grid.Row="8" Grid.Column="1" Click="LnButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonPi" Content="π" Grid.Row="8" Grid.Column="2" Click="PiButton_Click" Background="#FF5BC0DE"/>
+            <Button x:Name="ButtonE" Content="e" Grid.Row="8" Grid.Column="3" Click="EButton_Click" Background="#FF5BC0DE"/>
         </Grid>
     </Grid>
 </Window>

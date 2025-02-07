@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <!-- Global Style for Buttons -->
+        <!-- Global Style for Buttons --><!--
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -14,7 +14,7 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Height" Value="60"/>
             <Setter Property="Width" Value="60"/>
-            <!--<Setter Property="CornerRadius" Value="10"/>-->
+            --><!--<Setter Property="CornerRadius" Value="10"/>--><!--
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -23,7 +23,7 @@
             <Setter Property="Opacity" Value="1"/>
             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
 
-            <!-- Control Template for Button -->
+            --><!-- Control Template for Button --><!--
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -37,14 +37,14 @@
                 </Setter.Value>
             </Setter>
 
-            <!-- Mouse Over Effect -->
+            --><!-- Mouse Over Effect --><!--
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#FF66BB6A"/>
                     <Setter Property="BorderBrush" Value="#FF4CAF50"/>
                 </Trigger>
 
-                <!-- Mouse Down Effect -->
+                --><!-- Mouse Down Effect --><!--
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" Value="#FF388E3C"/>
                     <Setter Property="BorderBrush" Value="#FF2C6A2F"/>
@@ -52,8 +52,8 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Style for Display TextBox -->
-        <Style TargetType="TextBox" x:Key="DisplayTextBoxStyle">
+        --><!-- Style for Display TextBox -->
+        <!--<Style TargetType="TextBox" x:Key="DisplayTextBoxStyle">
             <Setter Property="FontSize" Value="36"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="TextAlignment" Value="Right"/>
@@ -64,7 +64,7 @@
             <Setter Property="BorderBrush" Value="#FF888888"/>
             <Setter Property="Height" Value="80"/>
             <Setter Property="IsReadOnly" Value="True"/>
-        </Style>
+        </Style>-->
 
     </Application.Resources>
 </Application>
