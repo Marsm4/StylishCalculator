@@ -63,6 +63,7 @@ namespace StylishCalculator
             }
         }
 
+
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             _currentInput = "";
@@ -89,7 +90,8 @@ namespace StylishCalculator
 
         private void SqrtButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput = "Sqrt(" + _currentInput + ")";
+            _currentInput += "Sqrt("; // Добавляем функцию в текущую позицию
+            _isFunctionPressed = true; // Устанавливаем флаг, что функция была нажата
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;
         }
@@ -97,7 +99,7 @@ namespace StylishCalculator
         private void TrigButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            _currentInput += button.Content.ToString() + "("; // Добавляем функцию и открывающую скобку
+            _currentInput += button.Content.ToString() + "("; // Добавляем функцию в текущую позицию
             _isFunctionPressed = true; // Устанавливаем флаг, что функция была нажата
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;
@@ -121,14 +123,16 @@ namespace StylishCalculator
 
         private void LogButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput = "Log10(" + _currentInput + ")";
+            _currentInput += "Log10("; // Добавляем функцию в текущую позицию
+            _isFunctionPressed = true; // Устанавливаем флаг, что функция была нажата
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;
         }
 
         private void LnButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentInput = "Ln(" + _currentInput + ")";
+            _currentInput += "Ln("; // Добавляем функцию в текущую позицию
+            _isFunctionPressed = true; // Устанавливаем флаг, что функция была нажата
             Display.Text = _currentInput;
             DisplayTop.Text = _currentInput;
         }
@@ -189,5 +193,7 @@ namespace StylishCalculator
                 MessageBox.Show("Ошибка: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+
     }
 }
